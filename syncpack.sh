@@ -19,6 +19,7 @@ function usage
 	echo "  Exported Commands:"
 	echo "   - init: alias as init_workspace"
 	echo "   - sync: alias as sync_file"
+	echo "   - version"
 }
 
 
@@ -31,7 +32,6 @@ fi
 sync_command=$1
 sync_command_args=($*)
 sync_command_args=${sync_command_args[*]:1}
-echo "sync_command_args = ${sync_command_args}"
 
 
 if test ${sync_command} = "init"
@@ -45,6 +45,10 @@ then
 elif [ ${sync_command} == "make_rootfs" ]
 then
 	make_rootfs ${sync_command_args}
+
+elif [ ${sync_command} == "version" ]
+then
+	version
 else
 	echo "!!!!error!!!!! unknown command $1"
 	usage

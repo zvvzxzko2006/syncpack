@@ -13,7 +13,34 @@ SYNC_DIR=${WORKSPACE_DIR}/.sync
 SYNC_LIST_DIR=${SYNC_DIR}/synclists
 PACK_TMP_PATH=${SYNC_DIR}/packages
 PACK_PATH=${WORKSPACE_DIR}
+SYNCPACK_REQUIRE_VERSION_MAIN=1
+SYNCPACK_REQUIRE_VERSION_SUB=0
+SYNCPACK_REQUIRE_VERSION_COMMIT=0
 
+function version
+{
+	echo "syncpack "
+	echo "    Version: syncpack 1.0.0"
+	echo "    Copyright: lvdong"
+	echo "    Any questions, contact zvvzxzko2006@163.com"
+}
+
+function require_version_usage
+{
+	echo "require_version usage:"
+	echo "    require_version [version]"
+	echo "        version: string like 1.0.0"
+}
+
+function require_version
+{
+	if [ $# -ne 1 ]
+	then 
+		exit -1
+	fi
+	require_version=$1
+
+}
 
 function prepare_packages
 {
